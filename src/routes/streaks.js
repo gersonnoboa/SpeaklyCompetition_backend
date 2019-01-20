@@ -22,7 +22,8 @@ router.get("/week", async(req, res) => {
             _id: "$name", 
             words: { $sum: "$words" },
             bestStreak: { $max: "$streakDays" },
-            currentStreak: { $last: "$streakDays" }
+            currentStreak: { $last: "$streakDays" },
+            lastUpdated: { $last: "$date" },
         }}
     ])
     .then(result => {
