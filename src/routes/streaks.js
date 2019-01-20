@@ -12,14 +12,22 @@ router.get("/", async (req, res) => {
 router.get("/week", async(req, res) => {
     const week = dateHelper.getWeek(new Date());
 
-    const streaks = await Streak.find({
-        date: {
-            $gte: week.start,
-            $lte: week.end
-        }
+    Streak.aggregate([
+        { $match: { 
+            date: {
+                $gte: week.start,
+                $lte: week.end
+        }}},
+        { $group: { 
+            _id: "$name", 
+            words: { $sum: "$words" },
+            bestStreak: { $max: "$streakDays" },
+            currentStreak: { $last: "$streakDays" }
+        }}
+    ])
+    .then(result => {
+        res.send(result);
     });
-
-    res.send(streaks);
 });
 
 router.post("/", async (req, res) => {
