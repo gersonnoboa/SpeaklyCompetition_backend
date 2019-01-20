@@ -21,6 +21,7 @@ router.get("/week", async(req, res) => {
         { $group: { 
             _id: "$name", 
             words: { $sum: "$words" },
+            lastWords: { $last: "$words" },
             bestStreak: { $max: "$streakDays" },
             currentStreak: { $last: "$streakDays" },
             lastUpdated: { $last: "$date" },
@@ -34,7 +35,7 @@ router.get("/week", async(req, res) => {
 
 router.post("/", async (req, res) => {
     const streak = new Streak({
-        name: req.body.name,
+        name: req.body.name.toLowerCase(),
         streakDays: req.body.streakDays,
         words: req.body.words,
         date: req.body.date

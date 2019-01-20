@@ -3,9 +3,11 @@ const app = express();
 const mongoose = require("mongoose");
 const helmet = require("helmet");
 const config = require("config");
+var cors = require('cors');
 
 app.use(express.json());
 app.use(helmet());
+app.use(cors());
 
 const streaks = require("./routes/streaks");
 app.use("/api/streaks", streaks);

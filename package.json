@@ -18,6 +18,7 @@
   "homepage": "https://github.com/gersonnoboa/SpeaklyCompetition_backend#readme",
   "dependencies": {
     "config": "^3.0.1",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "helmet": "^3.15.0",
     "jest": "^23.6.0",
