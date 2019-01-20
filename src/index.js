@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const helmet = require("helmet");
 const config = require("config");
+var http = require("http").Server(app);
 var cors = require('cors');
 
 app.use(express.json());
@@ -19,6 +20,6 @@ mongoose.connect(config.get("db_connection_string"))
 app.get('/', (req, res) => res.send('Hello World!'))
 
 const port = process.env.PORT || 5000;
-app.listen(port, () => {
+http.listen(port, () => {
   console.log(`Listening to port ${port}`);
 });

@@ -1,3 +1,4 @@
 {
-    "db_connection_string": "mongodb://mongo:27017/standen"
+    "db_connection_string": "mongodb://mongo:27017/speakly"
+    ""
 }
