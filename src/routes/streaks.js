@@ -26,6 +26,7 @@ router.get("/week", async(req, res) => {
             lastUpdated: { $last: "$date" },
         }}
     ])
+    .sort({ words: -1})
     .then(result => {
         res.send(result);
     });
