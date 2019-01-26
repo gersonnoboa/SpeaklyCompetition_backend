@@ -41,8 +41,12 @@ router.post("/", async (req, res) => {
         date: req.body.date
     });
 
-    const result = await streak.save();
-    res.send(result);
+    try {
+        const result = await streak.save();
+        res.send(result);
+    } catch (error) {
+        res.status(400).send(error);
+    }
 });
 
 module.exports = router;
