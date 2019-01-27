@@ -18,7 +18,7 @@ mongoose.connect(config.get("db_connection_string"))
 
 app.get('/', (req, res) => res.send('Hello World!'))
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8080;
 app.listen(port, '0.0.0.0', () => {
   console.log(`Listening to port ${port}`);
 });
