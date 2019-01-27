@@ -30,6 +30,9 @@ router.get("/week", async(req, res) => {
     .sort({ words: -1})
     .then(result => {
         res.send(result);
+    })
+    .catch(error => {
+        res.status(400).send(error);
     });
 });
 
