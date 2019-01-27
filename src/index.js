@@ -11,7 +11,7 @@ app.use(helmet());
 app.use(cors());
 
 const streaks = require("./routes/streaks");
-app.use("/api/streaks", streaks);
+app.use("/speakly/api/streaks", streaks);
 
 mongoose.connect(config.get("db_connection_string"))
     .then(() => console.log("Connected to MongoDB..."))
